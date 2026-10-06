@@ -362,5 +362,361 @@ window.SE_QUESTIONS = [
     "answer": [
       "B"
     ]
+  },
+  {
+    "id": "se-fa3-1",
+    "number": 1,
+    "globalNumber": 21,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Which statement best describes Agile software development?",
+    "options": [
+      "Development follows a fixed sequence with no changes",
+      "Requirements and solutions evolve through collaboration",
+      "Documentation must be completed before development begins",
+      "Customers participate only after the product is completed"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa3-2",
+    "number": 2,
+    "globalNumber": 22,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Which of the following is one of the Agile Development Values?",
+    "options": [
+      "Processes and tools over individuals and interactions",
+      "Contract negotiation over customer collaboration",
+      "Working software over comprehensive documentation",
+      "Following a plan over responding to change"
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa3-3",
+    "number": 3,
+    "globalNumber": 23,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "According to Agile principles, what is the primary measure of progress?",
+    "options": [
+      "Completed documentation",
+      "Working software",
+      "Number of meetings",
+      "Project budget"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa3-4",
+    "number": 4,
+    "globalNumber": 24,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Which characteristic distinguishes Agile from the Waterfall model?",
+    "options": [
+      "Agile follows only one development phase.",
+      "Agile discourages customer involvement.",
+      "Agile uses an incremental and iterative approach.",
+      "Agile requires all requirements to remain unchanged."
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa3-5",
+    "number": 5,
+    "globalNumber": 25,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Agile encourages teams to respond to changing requirements:",
+    "options": [
+      "Only before development starts",
+      "Only during planning",
+      "Even late in development",
+      "Never after requirements are approved"
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa3-6",
+    "number": 6,
+    "globalNumber": 26,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Which Agile methodology focuses primarily on people and their interactions rather than processes and tools?",
+    "options": [
+      "DSDM",
+      "Crystal Methodology",
+      "FDD",
+      "Waterfall"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa3-7",
+    "number": 7,
+    "globalNumber": 27,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Who developed the Crystal Methodology?",
+    "options": [
+      "Kent Beck",
+      "Alistair Cockburn",
+      "Ken Schwaber",
+      "Mary Poppendieck"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa3-8",
+    "number": 8,
+    "globalNumber": 28,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Which sequence correctly represents the three phases of Crystal Methodology?",
+    "options": [
+      "Planning, Coding, Testing",
+      "Analysis, Design, Deployment",
+      "Chartering, Cyclic Delivery, Wrap Up",
+      "Feasibility, Development, Maintenance"
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa3-9",
+    "number": 9,
+    "globalNumber": 29,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Agile emphasizes individuals and interactions over processes and tools.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "se-fa3-10",
+    "number": 10,
+    "globalNumber": 30,
+    "assessment": "FA3",
+    "category": "FA3: Agile Software Development",
+    "type": "choice",
+    "text": "Agile considers comprehensive documentation more important than working software.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa4-1",
+    "number": 1,
+    "globalNumber": 31,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What is a model in systems development?",
+    "options": [
+      "A complete copy of an existing system",
+      "A simplified description of a system",
+      "A collection of programming codes",
+      "A list of hardware components"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa4-2",
+    "number": 2,
+    "globalNumber": 32,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What does systems modeling use to conceptualize and construct systems?",
+    "options": [
+      "Models and diagrams",
+      "Programming languages only",
+      "Financial statements",
+      "Marketing plans"
+    ],
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "se-fa4-3",
+    "number": 3,
+    "globalNumber": 33,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "Which modeling approach represents the functions, activities, and operations within a system?",
+    "options": [
+      "Enterprise modeling",
+      "Data modeling",
+      "Functional modeling",
+      "Financial modeling"
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa4-4",
+    "number": 4,
+    "globalNumber": 34,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "In functional modeling, which element illustrates the transformation of input into output?",
+    "options": [
+      "Process",
+      "Data store",
+      "External entity",
+      "Flow line"
+    ],
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "se-fa4-5",
+    "number": 5,
+    "globalNumber": 35,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What does a Functional Flow Block Diagram primarily present?",
+    "options": [
+      "Database table relationships",
+      "Time-sequenced functional activities",
+      "Hardware prices",
+      "Employee records"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa4-6",
+    "number": 6,
+    "globalNumber": 36,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What is system architecture?",
+    "options": [
+      "A list of users who can access a system",
+      "A conceptual model of a system’s structure and behavior",
+      "A financial plan for system development",
+      "A collection of programming errors"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa4-7",
+    "number": 7,
+    "globalNumber": 37,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What is the primary purpose of Business Process Modeling?",
+    "options": [
+      "To identify computer specifications",
+      "To represent, analyze, and improve organizational processes",
+      "To determine employee salaries",
+      "To install software applications"
+    ],
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "se-fa4-8",
+    "number": 8,
+    "globalNumber": 38,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "Which type of business process creates the organization’s primary value stream?",
+    "options": [
+      "Management process",
+      "Supporting process",
+      "Operational process",
+      "Documentation process"
+    ],
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "se-fa4-9",
+    "number": 9,
+    "globalNumber": 39,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "Which of the following is an example of a supporting process?",
+    "options": [
+      "Strategic management",
+      "Product manufacturing",
+      "Marketing and sales",
+      "Recruitment and technical support"
+    ],
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "se-fa4-10",
+    "number": 10,
+    "globalNumber": 40,
+    "assessment": "FA4",
+    "category": "FA4: Systems and Business Process Modeling",
+    "type": "choice",
+    "text": "What is the purpose of Business Process Model and Notation (BPMN)?",
+    "options": [
+      "To provide a graphical notation for business processes",
+      "To identify computer hardware",
+      "To calculate software costs",
+      "To create database records"
+    ],
+    "answer": [
+      "A"
+    ]
   }
 ];

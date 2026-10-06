@@ -9,13 +9,13 @@
   const storageKey = 'netquest-se-fa-progress-v2';
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  const assessmentOrder = ['FA1', 'FA2'];
+  const assessmentOrder = ['FA1', 'FA2', 'FA3', 'FA4'];
   const assessments = [
     {
       id: 'all',
       group: 'final',
-      title: 'Software Engineering — FA1 + FA2',
-      subtitle: 'All 20 questions from both formative assessments.',
+      title: 'Software Engineering - FA1 to FA4',
+      subtitle: 'All 40 questions from four formative assessments.',
       questions: seQuestions
     },
     ...assessmentOrder.map(assessment => ({
@@ -35,7 +35,7 @@
   let timerId = null;
   let advanceId = null;
 
-  function freshState(order = seQuestions.map(question => question.id), mode = 'assessment', assessmentId = 'all', scopeLabel = 'Software Engineering — FA1 + FA2') {
+  function freshState(order = seQuestions.map(question => question.id), mode = 'assessment', assessmentId = 'all', scopeLabel = 'Software Engineering - FA1 to FA4') {
     return {
       order,
       index: 0,
@@ -91,7 +91,7 @@
       if (!saved || !Array.isArray(saved.order) || !saved.answered) return null;
       if (!saved.order.every(id => byId.has(id))) return null;
       return {
-        ...freshState(saved.order, saved.mode || 'assessment', saved.assessmentId || 'all', saved.scopeLabel || 'Software Engineering — FA1 + FA2'),
+        ...freshState(saved.order, saved.mode || 'assessment', saved.assessmentId || 'all', saved.scopeLabel || 'Software Engineering - FA1 to FA4'),
         ...saved
       };
     } catch {

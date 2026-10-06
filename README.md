@@ -1,7 +1,7 @@
 # NetQuest - Software Engineering Reviewer
 
-A responsive quiz website containing 20 Software Engineering questions across
-FA1 and FA2, with separate assessment cards and a combined reviewer.
+A responsive quiz website containing 40 Software Engineering questions across
+FA1 through FA4, with separate assessment cards and a combined reviewer.
 
 The site follows the layout and behavior of the existing `networking reviewer`
 project, including saved progress, question and choice shuffling, flags, instant

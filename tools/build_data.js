@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { fa3, fa4 } = require('./fa3_fa4');
 
 const fa1 = [
   {
@@ -187,6 +188,24 @@ const questions = [
     globalNumber: fa1.length + index + 1,
     assessment: 'FA2',
     category: 'FA2: Projects and Project Management',
+    type: 'choice',
+    ...question
+  })),
+  ...fa3.map((question, index) => ({
+    id: `se-fa3-${index + 1}`,
+    number: index + 1,
+    globalNumber: fa1.length + fa2.length + index + 1,
+    assessment: 'FA3',
+    category: 'FA3: Agile Software Development',
+    type: 'choice',
+    ...question
+  })),
+  ...fa4.map((question, index) => ({
+    id: `se-fa4-${index + 1}`,
+    number: index + 1,
+    globalNumber: fa1.length + fa2.length + fa3.length + index + 1,
+    assessment: 'FA4',
+    category: 'FA4: Systems and Business Process Modeling',
     type: 'choice',
     ...question
   }))
