@@ -16,7 +16,7 @@
       <span class="brand-mark">N</span><span>NetQuest</span>
     </a>
     <div class="top-actions">
-      <span class="source-pill">40 questions · 5 study sets</span>
+      <span class="source-pill">90 questions · 6 study sets</span>
       <button class="icon-button" id="themeButton" type="button" aria-label="Toggle dark mode">☾</button>
       <button class="icon-button" id="soundButton" type="button" aria-label="Toggle sound">♪</button>
     </div>
@@ -27,7 +27,7 @@
       <div class="hero-copy">
         <span class="eyebrow">SOFTWARE ENGINEERING REVIEWER</span>
         <h1>Review the essentials.<br><span>Master the assessment.</span></h1>
-        <p>Study all 40 questions from FA1 through FA4 together, or focus on one formative assessment at a time.</p>
+        <p>Study FA1 through FA4 or practice the 50 questions from walalang.txt.</p>
 
         <label class="setting-card shuffle-mode-control">
           <span><strong>Shuffle mode</strong><small>Choose exactly what gets randomized</small></span>
@@ -50,9 +50,9 @@
         </div>
 
         <div class="stats-strip">
-          <div><strong>40</strong><span>Unique questions</span></div>
-          <div><strong>5</strong><span>Study sets</span></div>
-          <div><strong>FA1 - FA4</strong><span>Assessments</span></div>
+          <div><strong>90</strong><span>Unique questions</span></div>
+          <div><strong>6</strong><span>Study sets</span></div>
+          <div><strong>FA1 - FA4 + file</strong><span>Assessments</span></div>
         </div>
       </div>
 
@@ -84,6 +84,11 @@
         <div class="assessment-section">
           <h3>Formative assessments</h3>
           <div class="assessment-grid" id="faAssessmentGrid"></div>
+        </div>
+
+        <div class="assessment-section">
+          <h3>Imported question bank</h3>
+          <div class="assessment-grid featured-grid" id="importAssessmentGrid"></div>
         </div>
 
       </section>
@@ -164,6 +169,7 @@
   </dialog>
 
   <script src="data/questions.js"></script>
+  <script src="data/walalang.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>

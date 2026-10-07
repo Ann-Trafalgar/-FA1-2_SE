@@ -2,7 +2,8 @@
   'use strict';
 
   const seQuestions = window.SE_QUESTIONS || [];
-  const baseQuestions = seQuestions.slice();
+  const importedQuestions = window.WALALANG_QUESTIONS || [];
+  const baseQuestions = [...seQuestions, ...importedQuestions];
   const byId = new Map(baseQuestions.map(question => [question.id, question]));
   const $ = id => document.getElementById(id);
   const screens = ['welcomeScreen', 'quizScreen', 'resultsScreen'];
@@ -14,9 +15,9 @@
     {
       id: 'all',
       group: 'final',
-      title: 'Software Engineering - FA1 to FA4',
-      subtitle: 'All 40 questions from four formative assessments.',
-      questions: seQuestions
+      title: 'Complete Software Engineering Reviewer',
+      subtitle: 'All 90 questions from FA1–FA4 and walalang.txt.',
+      questions: baseQuestions
     },
     ...assessmentOrder.map(assessment => ({
       id: assessment.toLowerCase(),
@@ -24,7 +25,12 @@
       title: assessment,
       subtitle: seQuestions.find(question => question.assessment === assessment)?.category.replace(`${assessment}: `, '') || 'Software Engineering assessment',
       questions: seQuestions.filter(question => question.assessment === assessment)
-    }))
+    })),
+    {
+      id: 'walalang', group: 'import', title: 'walalang.txt',
+      subtitle: '25 multiple choice, 15 true or false, and 10 identification questions.',
+      questions: importedQuestions
+    }
   ];
   const assessmentById = new Map(assessments.map(assessment => [assessment.id, assessment]));
 
@@ -32,10 +38,11 @@
   let questions = baseQuestions.slice();
   let selectedChoiceIndexes = [];
   let selectedMatches = [];
+  let typedAnswer = '';
   let timerId = null;
   let advanceId = null;
 
-  function freshState(order = seQuestions.map(question => question.id), mode = 'assessment', assessmentId = 'all', scopeLabel = 'Software Engineering - FA1 to FA4') {
+  function freshState(order = baseQuestions.map(question => question.id), mode = 'assessment', assessmentId = 'all', scopeLabel = 'Complete Software Engineering Reviewer') {
     return {
       order,
       index: 0,
@@ -159,6 +166,7 @@
     const savedAnswer = state.answered[question.id];
     selectedChoiceIndexes = savedAnswer?.selectedChoiceIndexes?.slice() || [];
     selectedMatches = savedAnswer?.selectedMatches?.slice() || question.pairs?.map(() => '') || [];
+    typedAnswer = savedAnswer?.typedAnswer || '';
 
     $('questionCounter').textContent = `Question ${state.index + 1} of ${questions.length}`;
     const assessmentPrefix = `${question.assessment} · `;
@@ -191,6 +199,7 @@
     $('answerArea').closest('.answer-panel').classList.toggle('answered', Boolean(savedAnswer));
 
     if (question.type === 'match') renderMatching(question, savedAnswer);
+    else if (question.type === 'identification') renderIdentification(question, savedAnswer);
     else renderChoices(question, savedAnswer);
 
     if (savedAnswer) {
@@ -329,6 +338,30 @@
     $('answerArea').append(list);
   }
 
+  function renderIdentification(question, savedAnswer) {
+    $('answerTitle').textContent = 'Type your answer';
+    $('answerHint').textContent = 'Capitalization does not matter.';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'identification-input';
+    input.setAttribute('aria-label', 'Your answer');
+    input.autocomplete = 'off';
+    input.value = typedAnswer;
+    input.disabled = Boolean(savedAnswer);
+    input.addEventListener('input', () => {
+      typedAnswer = input.value;
+      updateSubmit(question);
+    });
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && !$('submitButton').disabled) checkAnswer();
+    });
+    $('answerArea').append(input);
+  }
+
+  function normalizeIdentification(value) {
+    return value.trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+  }
+
   function updateSubmit(question) {
     if (state.answered[question.id]) {
       $('submitButton').disabled = true;
@@ -336,7 +369,9 @@
     }
     $('submitButton').disabled = question.type === 'match'
       ? selectedMatches.length !== question.pairs.length || selectedMatches.some(value => !value)
-      : selectedChoiceIndexes.length !== question.answer.length;
+      : question.type === 'identification'
+        ? !typedAnswer.trim()
+        : selectedChoiceIndexes.length !== question.answer.length;
   }
 
   function checkAnswer() {
@@ -346,6 +381,9 @@
     if (question.type === 'match') {
       correct = question.pairs.every((pair, index) => pair[1] === selectedMatches[index]);
       stored.selectedMatches = selectedMatches.slice();
+    } else if (question.type === 'identification') {
+      correct = question.acceptedAnswers.some(value => normalizeIdentification(value) === normalizeIdentification(typedAnswer));
+      stored.typedAnswer = typedAnswer;
     } else {
       const selectedLetters = selectedChoiceIndexes.map(index => letters[index]).sort().join('');
       correct = selectedLetters === question.answer.slice().sort().join('');
@@ -370,6 +408,8 @@
     const answer = document.createElement('div');
     if (question.type === 'match') {
       answer.textContent = question.pairs.map(([prompt, value]) => `${prompt} → ${value}`).join('\n');
+    } else if (question.type === 'identification') {
+      answer.textContent = question.acceptedAnswers.join(' / ');
     } else {
       const choiceOrder = state.choiceOrders[question.id] || question.options.map((_, index) => index);
       answer.textContent = question.answer.map(originalLetter => {
@@ -445,7 +485,8 @@
   function renderAssessmentPicker() {
     const targets = {
       final: $('finalAssessmentGrid'),
-      fa: $('faAssessmentGrid')
+      fa: $('faAssessmentGrid'),
+      import: $('importAssessmentGrid')
     };
     Object.values(targets).forEach(target => target.replaceChildren());
 
@@ -522,6 +563,7 @@
   $('clearButton').addEventListener('click', () => {
     const question = questions[state.index];
     if (question.type === 'match') selectedMatches = question.pairs.map(() => '');
+    else if (question.type === 'identification') typedAnswer = '';
     else selectedChoiceIndexes = [];
     renderQuestion();
   });

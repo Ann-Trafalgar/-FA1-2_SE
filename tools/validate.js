@@ -6,6 +6,18 @@ const questions = JSON.parse(fs.readFileSync(path.join(root, 'data', 'questions.
 const failures = [];
 const assert = (condition, message) => { if (!condition) failures.push(message); };
 
+const vm = require('vm');
+const context = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'data', 'walalang.js'), 'utf8'), context);
+const imported = context.window.WALALANG_QUESTIONS;
+assert(imported.length === 50, `Expected 50 imported questions, found ${imported.length}`);
+assert(imported.every((question, index) => question.number === index + 1), 'Imported numbering is not sequential');
+assert(imported.slice(0, 25).map(question => question.answer[0]).join('') === 'BBBBBCAAACBBBDCCBBCBBBCBC', 'Imported multiple-choice answer key differs from source');
+assert(imported.slice(25, 40).map(question => question.answer[0]).join('') === 'ABABABABABAAABA', 'Imported true/false answer key differs from source');
+assert(imported.slice(25, 40).every(question => question.options.join('/') === 'True/False'), 'Imported true/false choices are invalid');
+assert(imported.slice(40).every(question => question.type === 'identification' && question.acceptedAnswers.length), 'Imported identification answers are missing');
+assert(new Set(imported.map(question => question.id)).size === 50, 'Imported IDs are not unique');
+
 assert(questions.length === 40, `Expected 40 questions, found ${questions.length}`);
 assert(new Set(questions.map(question => question.id)).size === 40, 'Question IDs are not unique');
 for (const assessment of ['FA1', 'FA2', 'FA3', 'FA4']) {
@@ -37,4 +49,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('Validated 40 questions, FA1-FA4 grouping, answers, formatting, and all DOM references.');
+console.log('Validated 40 FA questions, 50 imported questions, answers, formatting, and all DOM references.');
